@@ -1,3 +1,7 @@
+<?php
+/* The main index file */
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]><html lang="en-US" class="ie6"><![endif]-->
 <!--[if IE 7]><html lang="en-US" class="ie7"><![endif]-->
@@ -10,12 +14,13 @@
 <meta name="viewport" content="width=device-width" />
 <title>WordPress Writer and Instructor | RACHEL McCOLLIN</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link href="https://fonts.googleapis.com/css?family=Assistant|Oswald" rel="stylesheet">
 
+<?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 	
 	<div class="header-bg">
 	
@@ -66,29 +71,28 @@
 		
 		<div id="content" class="two-thirds left">
 
-			<article class="post">
+			<?php while ( have_posts() ) : the_post(); //Open the loop ?>
 			
-				<h2 class="entry-title">Welcome to This Website</h2>
-		
-				<section class="entry-content">
-			
-					<p>This site is comprised of one static HTML file. It supports a series from WPMU DEV on creating your first WordPress theme from static HTML.</p>
-					<p>You will be able to add more content later via the WordPress admin screens.
-						
-					<h3>Here's a heading so you can check how it's styled</h3>
-					<p>And another paragraph underneath.</p>
-					<p>And a list:</p>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					
-					<ul>
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>And so on...</li>
-					</ul>
-						
-				
-				</section><!-- .entry-content -->
+					<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+			
+					<section class="entry-meta">
+						<?php echo get_the_date(); ?>
+					</section><!-- .entry-meta -->
+					
+					<section class="entry-content">
+						<?php the_content(); ?>
+					</section><!-- .entry-content -->	
+			
+					<section class="entry-utility">
+						<?php comments_template(); ?>
+					</section><!-- .entry-utility -->
+					
+				</article>
+			
+			<?php endwhile; // End the loop. ?>
 
-			</article><!-- #post-## -->
 
 		</div><!-- #content -->
 
@@ -123,6 +127,8 @@
 		</div>
 
 	</footer>
+	
+	<?php wp_footer(); ?>
 
 </body>
 </html>

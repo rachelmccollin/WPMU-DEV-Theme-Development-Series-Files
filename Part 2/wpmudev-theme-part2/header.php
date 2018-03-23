@@ -10,12 +10,13 @@
 <meta name="viewport" content="width=device-width" />
 <title>WordPress Writer and Instructor | RACHEL McCOLLIN</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link href="https://fonts.googleapis.com/css?family=Assistant|Oswald" rel="stylesheet">
 
+<?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 	
 	<div class="header-bg">
 	
@@ -42,7 +43,6 @@
 		
 	</div><!-- header-bg-->
 	
-			
 	<!-- full width navigation menu -->
 	<nav class="menu main">
 		  
@@ -60,70 +60,3 @@
 		</div>		
 		
 	</nav><!-- .main -->
-		
-
-	<div class="main">
-		
-		<div id="content" class="two-thirds left">
-
-			<article class="post">
-			
-				<h2 class="entry-title">Welcome to This Website</h2>
-		
-				<section class="entry-content">
-			
-					<p>This site is comprised of one static HTML file. It supports a series from WPMU DEV on creating your first WordPress theme from static HTML.</p>
-					<p>You will be able to add more content later via the WordPress admin screens.
-						
-					<h3>Here's a heading so you can check how it's styled</h3>
-					<p>And another paragraph underneath.</p>
-					<p>And a list:</p>
-					
-					<ul>
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>And so on...</li>
-					</ul>
-						
-				
-				</section><!-- .entry-content -->
-
-			</article><!-- #post-## -->
-
-		</div><!-- #content -->
-
-		
-		<aside class="sidebar one-third right">
-
-			<aside class="widget-area">
-				
-				<div class="widget-container">
-					
-					<h3 class="widget-title">Buy My Book</h3>
-					
-					<img width="242" height="300" src="https://rachelmccollin.com/wp-content/uploads/2017/09/front-cover-e1506593809874-242x300.jpg" alt="WordPress: Pushing the Limits by Rachel McCollin" style="max-width: 100%; height: auto;" />
-					
-					<p><em>WordPress: Pushing the Limits</em> will help you become a professional WordPress developer.</p>
-	
-				</div>
-			
-			</aside>
-
-		</aside>
-		
-	</div><!-- .main -->
-
-
-	<footer>
-	
-		<div class="fatfooter">
-	
-			<p>Add footer content here with <a href="#">widget areas</a> - the tutorials will show you how.</p>
-	
-		</div>
-
-	</footer>
-
-</body>
-</html>
-
